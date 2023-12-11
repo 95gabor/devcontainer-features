@@ -1,0 +1,25 @@
+{
+    "name": "kubecolor",
+    "id": "kubecolor",
+    "version": "1.0.0",
+    "description": "",
+    "options": {
+        "version": {
+            "type": "string",
+            "proposals": [
+                "latest",
+                "none"
+            ],
+            "default": "latest",
+            "description": "Select or enter a kubecolor version to install"
+        },
+        "alias": {
+            "type": "boolean",
+            "default": true,
+            "description": "Add kubectl alias to kuebecolor"
+        }
+    },
+    "installsAfter": [
+        "ghcr.io/devcontainers/features/common-utils"
+    ]
+}
