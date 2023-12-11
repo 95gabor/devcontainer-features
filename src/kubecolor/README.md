@@ -16,7 +16,9 @@
 | Options Id | Description | Type | Default Value |
 |-----|-----|-----|-----|
 | version | Select or enter a kubecolor version to install | string | latest |
-| alias | Adds `kubectl=kubecolor` alias in your .bashrc | boolean | true |
+| alias | Add kubectl alias to kuebecolor | boolean | true |
+
+
 
 ---
 
