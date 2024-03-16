@@ -48,20 +48,41 @@ apt_get_update()
 }
 
 # Checks if packages are installed and installs them if not
-check_packages() {
+check_apt_packages() {
     if ! dpkg -s "$@" > /dev/null 2>&1; then
         apt_get_update
         apt-get -y install --no-install-recommends "$@"
     fi
 }
 
+check_apk_packages() {
+    if ! apk info -e "$@" > /dev/null 2>&1; then
+        apk add --no-cache install --no-install-recommends "$@"
+    fi
+}
+
+check_packages() {
+    local distro=$1
+    local packages=("${@:2}")
+    echo "${packages[@]}"
+
+    case $distro in
+        debian | ubuntu) check_apt_packages "${packages[@]}";;
+        alpine) check_apk_packages "${packages[@]}";;
+        *) echo "(!) Distro $distro unsupported"; exit 1 ;;
+    esac
+}
+
 # Ensure apt is in non-interactive to avoid prompts
 export DEBIAN_FRONTEND=noninteractive
 
+# Bring in ID, ID_LIKE, VERSION_ID, VERSION_CODENAME
+. /etc/os-release
+
 # Install dependencies
-check_packages curl ca-certificates coreutils
+check_packages "${ID}" curl ca-certificates coreutils
 if ! type git > /dev/null 2>&1; then
-    check_packages git
+    check_packages "${ID}" git
 fi
 
 architecture="$(uname -m)"

@@ -15,7 +15,6 @@ jobs:
         features:
           - kubecolor
         baseImage:
-          - alpine:latest
           - debian:latest
           - ubuntu:latest
           - mcr.microsoft.com/devcontainers/base:alpine
