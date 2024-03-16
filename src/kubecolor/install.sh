@@ -67,7 +67,7 @@ fi
 architecture="$(uname -m)"
 
 case $architecture in
-    x86_64) architecture="x86_64";;
+    x86_64) architecture="amd64";;
     aarch64 | armv8*) architecture="arm64";;
     ppc64le) architecture="ppc64le";;
     *) echo "(!) Architecture $architecture unsupported"; exit 1 ;;
