@@ -1,7 +1,7 @@
 {
     "name": "kubecolor",
     "id": "kubecolor",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "",
     "options": {
         "version": {
