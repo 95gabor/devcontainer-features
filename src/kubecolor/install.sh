@@ -82,10 +82,10 @@ if [ "${KUBECOLOR_VERSION}" != "none" ] && ! type kubecolor > /dev/null 2>&1; th
 
     KUBECOLOR_VERSION="${KUBECOLOR_VERSION}"
 
-    curl -sSL -o /tmp/kubecolor-linux-${architecture}.tar.gz "https://github.com/kubecolor/kubecolor/releases/download/v${KUBECOLOR_VERSION}/kubecolor_${KUBECOLOR_VERSION}_Linux_${architecture}.tar.gz"
+    curl -sSL -o /tmp/kubecolor-linux-${architecture}.tar.gz "https://github.com/kubecolor/kubecolor/releases/download/v${KUBECOLOR_VERSION}/kubecolor_${KUBECOLOR_VERSION}_linux_${architecture}.tar.gz"
 
     if [ "$KUBECOLOR_SHA256" = "automatic" ]; then
-        KUBECOLOR_SHA256="$(curl -sSL "https://github.com/kubecolor/kubecolor/releases/download/v${KUBECOLOR_VERSION}/checksums.txt" | grep kubecolor_${KUBECOLOR_VERSION}_Linux_${architecture}.tar.gz | cut -f1 -d' ')"
+        KUBECOLOR_SHA256="$(curl -sSL "https://github.com/kubecolor/kubecolor/releases/download/v${KUBECOLOR_VERSION}/checksums.txt" | grep kubecolor_${KUBECOLOR_VERSION}_linux_${architecture}.tar.gz | cut -f1 -d' ')"
         echo $KUBECOLOR_SHA256
     fi
     ([ "${KUBECOLOR_SHA256}" = "dev-mode" ] || (echo "${KUBECOLOR_SHA256} */tmp/kubecolor-linux-${architecture}.tar.gz" | sha256sum -c -))
